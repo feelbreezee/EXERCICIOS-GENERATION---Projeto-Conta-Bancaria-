@@ -1,11 +1,11 @@
-export class Conta {
+export abstract class Conta {
 
     private _numero: number;
     private _agencia: number;
     private _tipo: number;
     private _titular: string;
     private _saldo: number;
-  
+
     constructor(numero: number, agencia: number, tipo: number, titular: string, saldo: number) {
         this._numero = numero;
         this._agencia = agencia;
@@ -53,8 +53,8 @@ export class Conta {
     public set saldo(saldo: number) {
         this._saldo = saldo;
     }
-    
-	public sacar(valor: number): boolean {
+
+    public sacar(valor: number): boolean {
 
         if (this._saldo < valor) {
             console.log("\n Saldo Insuficiente!");
@@ -89,7 +89,8 @@ export class Conta {
         console.log("Agência: " + this._agencia);
         console.log("Tipo da Conta: " + tipo);
         console.log("Titular: " + this._titular);
-        console.log("Saldo: " + this._saldo);
+        console.log("Saldo: " + this._saldo.toFixed(2));
 
     }
+
 }

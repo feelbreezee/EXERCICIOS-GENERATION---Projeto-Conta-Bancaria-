@@ -1,17 +1,26 @@
 import readlinesync = require("readline-sync");
-import { Conta } from "./src/model/Conta";
+import { ContaCorrente } from './src/model/ContaCorrente';
+import { ContaPoupanca } from './src/model/ContaPoupança';
 
 export function main() {
 
     let opcao: number;
 
-     const conta: Conta = new Conta(1, 123, 1, "João da Silva", 1000);
+    // Objeto da Classe ContaCorrente (Teste)
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
 
-    conta.visualizar();
-    conta.sacar(500);
-    conta.visualizar();
-    conta.depositar(1000);
-    conta.visualizar();
+    // Objeto da Classe ContaPoupanca (teste)
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
 
     while (true) {
 
@@ -40,45 +49,46 @@ export function main() {
         if (opcao == 9) {
             console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
+            console.log("");
             process.exit(0);
         }
 
         switch (opcao) {
             case 1:
                 console.log("\n\nCriar Conta\n\n");
-
+                keyPress()
                 break;
             case 2:
                 console.log("\n\nListar todas as Contas\n\n");
-
+                keyPress()
                 break;
             case 3:
                 console.log("\n\nConsultar dados da Conta - por número\n\n");
-
+                keyPress()
                 break;
             case 4:
                 console.log("\n\nAtualizar dados da Conta\n\n");
-
+                keyPress()
                 break;
             case 5:
                 console.log("\n\nApagar uma Conta\n\n");
-
+                keyPress()
                 break;
             case 6:
                 console.log("\n\nSaque\n\n");
-
+                keyPress()
                 break;
             case 7:
                 console.log("\n\nDepósito\n\n");
-
+                keyPress()
                 break;
             case 8:
                 console.log("\n\nTransferência entre Contas\n\n");
-
+                keyPress()
                 break;
             default:
                 console.log("\nOpção Inválida!\n");
-
+                keyPress()
                 break;
         }
     }
@@ -86,13 +96,17 @@ export function main() {
 }
 
 /* Função com os dados da pessoa desenvolvedora */
-
-export function sobre(): void {
+function sobre(): void {
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: ");
     console.log("Generation Brasil - generation@generation.org");
     console.log("github.com/conteudoGeneration");
     console.log("*****************************************************");
+}
+
+function keyPress(): void {
+    console.log("\nPressione enter para continuar...");
+    readlinesync.prompt();
 }
 
 main();
